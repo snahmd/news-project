@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'wagtail.contrib.modeladmin',
+    
+    'wagtailtrans',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +65,7 @@ MIDDLEWARE = [
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'wagtailtrans.middleware.TranslationMiddleware',
 ]
 
 ROOT_URLCONF = 'news.urls'
@@ -121,6 +126,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('de', _('German')),
+    ('fr', _('French')),
+    ('it', _('Italian')),
+    ('es', _('Spanish')),
+    ('tr', _('Turkish')),
+]
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -161,3 +177,6 @@ WAGTAIL_SITE_NAME = "news"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+
+
